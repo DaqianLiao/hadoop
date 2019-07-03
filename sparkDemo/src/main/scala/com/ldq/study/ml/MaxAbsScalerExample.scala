@@ -28,7 +28,7 @@ object MaxAbsScalerExample {
     val spark = SparkSession
       .builder
       .appName("MaxAbsScalerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dataFrame = spark.createDataFrame(Seq(

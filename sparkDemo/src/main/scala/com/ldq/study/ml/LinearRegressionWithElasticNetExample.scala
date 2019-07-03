@@ -29,7 +29,7 @@ object LinearRegressionWithElasticNetExample {
     val spark = SparkSession
       .builder
       .appName("LinearRegressionWithElasticNetExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load training data

@@ -32,7 +32,7 @@ object EstimatorTransformerParamExample {
     val spark = SparkSession
       .builder
       .appName("EstimatorTransformerParamExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Prepare training data from a list of (label, features) tuples.

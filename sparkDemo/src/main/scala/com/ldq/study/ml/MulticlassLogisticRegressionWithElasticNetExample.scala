@@ -29,7 +29,7 @@ object MulticlassLogisticRegressionWithElasticNetExample {
     val spark = SparkSession
       .builder
       .appName("MulticlassLogisticRegressionWithElasticNetExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load training data

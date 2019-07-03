@@ -28,7 +28,7 @@ object BucketizerExample {
     val spark = SparkSession
       .builder
       .appName("BucketizerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val splits = Array(Double.NegativeInfinity, -0.5, 0.0, 0.5, Double.PositiveInfinity)

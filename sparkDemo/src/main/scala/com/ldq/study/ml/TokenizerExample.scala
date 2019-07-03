@@ -29,7 +29,7 @@ object TokenizerExample {
     val spark = SparkSession
       .builder
       .appName("TokenizerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val sentenceDataFrame = spark.createDataFrame(Seq(

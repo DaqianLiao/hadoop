@@ -34,7 +34,7 @@ object VectorSlicerExample {
     val spark = SparkSession
       .builder
       .appName("VectorSlicerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val data = Arrays.asList(

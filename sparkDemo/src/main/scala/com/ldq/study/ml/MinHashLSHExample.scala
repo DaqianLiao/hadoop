@@ -36,7 +36,7 @@ object MinHashLSHExample {
     val spark = SparkSession
       .builder
       .appName("MinHashLSHExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dfA = spark.createDataFrame(Seq(

@@ -32,7 +32,7 @@ object ImputerExample {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
       .appName("ImputerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(Seq(

@@ -31,7 +31,7 @@ object RandomForestClassifierExample {
     val spark = SparkSession
       .builder
       .appName("RandomForestClassifierExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load and parse the data file, converting it to a DataFrame.

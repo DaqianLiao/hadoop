@@ -28,7 +28,7 @@ object StandardScalerExample {
     val spark = SparkSession
       .builder
       .appName("StandardScalerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dataFrame = spark.read.format("libsvm").load("data/mllib/sample_libsvm_data.txt")

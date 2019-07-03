@@ -38,7 +38,7 @@ object ModelSelectionViaTrainValidationSplitExample {
     val spark = SparkSession
       .builder
       .appName("ModelSelectionViaTrainValidationSplitExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Prepare training and test data.

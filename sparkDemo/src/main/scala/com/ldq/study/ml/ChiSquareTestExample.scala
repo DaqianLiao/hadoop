@@ -37,7 +37,7 @@ object ChiSquareTestExample {
     val spark = SparkSession
       .builder
       .appName("ChiSquareTestExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     import spark.implicits._
 
     // $example on$

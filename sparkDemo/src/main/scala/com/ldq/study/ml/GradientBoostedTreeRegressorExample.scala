@@ -31,7 +31,7 @@ object GradientBoostedTreeRegressorExample {
     val spark = SparkSession
       .builder
       .appName("GradientBoostedTreeRegressorExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load and parse the data file, converting it to a DataFrame.

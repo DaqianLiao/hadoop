@@ -28,7 +28,7 @@ object SQLTransformerExample {
     val spark = SparkSession
       .builder
       .appName("SQLTransformerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(

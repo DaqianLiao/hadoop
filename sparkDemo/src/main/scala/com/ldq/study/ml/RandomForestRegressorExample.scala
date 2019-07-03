@@ -31,7 +31,7 @@ object RandomForestRegressorExample {
     val spark = SparkSession
       .builder
       .appName("RandomForestRegressorExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load and parse the data file, converting it to a DataFrame.

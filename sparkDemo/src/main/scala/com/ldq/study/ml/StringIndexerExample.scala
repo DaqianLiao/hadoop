@@ -28,7 +28,7 @@ object StringIndexerExample {
     val spark = SparkSession
       .builder
       .appName("StringIndexerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(

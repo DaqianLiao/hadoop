@@ -46,7 +46,7 @@ object ALSExample {
     val spark = SparkSession
       .builder
       .appName("ALSExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     import spark.implicits._
 
     // $example on$

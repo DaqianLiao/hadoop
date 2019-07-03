@@ -33,7 +33,7 @@ object MultilayerPerceptronClassifierExample {
     val spark = SparkSession
       .builder
       .appName("MultilayerPerceptronClassifierExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load the data stored in LIBSVM format as a DataFrame.

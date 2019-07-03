@@ -28,7 +28,7 @@ object BinarizerExample {
     val spark = SparkSession
       .builder
       .appName("BinarizerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val data = Array((0, 0.1), (1, 0.8), (2, 0.2))

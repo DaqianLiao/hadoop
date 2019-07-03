@@ -29,7 +29,7 @@ object MinMaxScalerExample {
     val spark = SparkSession
       .builder
       .appName("MinMaxScalerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dataFrame = spark.createDataFrame(Seq(

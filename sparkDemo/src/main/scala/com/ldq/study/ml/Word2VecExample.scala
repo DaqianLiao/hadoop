@@ -30,7 +30,7 @@ object Word2VecExample {
     val spark = SparkSession
       .builder
       .appName("Word2Vec example")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Input data: Each row is a bag of words from a sentence or document.

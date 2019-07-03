@@ -29,7 +29,7 @@ object PolynomialExpansionExample {
     val spark = SparkSession
       .builder
       .appName("PolynomialExpansionExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val data = Array(

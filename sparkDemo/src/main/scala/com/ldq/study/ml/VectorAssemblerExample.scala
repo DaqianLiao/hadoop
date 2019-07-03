@@ -29,7 +29,7 @@ object VectorAssemblerExample {
     val spark = SparkSession
       .builder
       .appName("VectorAssemblerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dataset = spark.createDataFrame(

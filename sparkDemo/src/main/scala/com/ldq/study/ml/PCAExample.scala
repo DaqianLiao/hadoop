@@ -29,7 +29,7 @@ object PCAExample {
     val spark = SparkSession
       .builder
       .appName("PCAExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val data = Array(

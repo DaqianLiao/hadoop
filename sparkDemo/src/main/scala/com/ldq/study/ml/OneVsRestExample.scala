@@ -38,7 +38,7 @@ object OneVsRestExample {
     val spark = SparkSession
       .builder
       .appName(s"OneVsRestExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // load data file.

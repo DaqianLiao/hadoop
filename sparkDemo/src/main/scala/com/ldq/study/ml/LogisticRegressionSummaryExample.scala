@@ -30,7 +30,7 @@ object LogisticRegressionSummaryExample {
     val spark = SparkSession
       .builder
       .appName("LogisticRegressionSummaryExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     import spark.implicits._
 
     // Load training data

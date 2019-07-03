@@ -28,7 +28,7 @@ object RFormulaExample {
     val spark = SparkSession
       .builder
       .appName("RFormulaExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dataset = spark.createDataFrame(Seq(

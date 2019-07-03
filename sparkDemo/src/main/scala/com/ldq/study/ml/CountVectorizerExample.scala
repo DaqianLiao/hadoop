@@ -28,7 +28,7 @@ object CountVectorizerExample {
     val spark = SparkSession
       .builder
       .appName("CountVectorizerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(Seq(

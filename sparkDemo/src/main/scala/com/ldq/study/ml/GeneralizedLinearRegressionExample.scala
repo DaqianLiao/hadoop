@@ -37,7 +37,7 @@ object GeneralizedLinearRegressionExample {
     val spark = SparkSession
       .builder
       .appName("GeneralizedLinearRegressionExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load training data

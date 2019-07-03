@@ -38,7 +38,7 @@ object CorrelationExample {
     val spark = SparkSession
       .builder
       .appName("CorrelationExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     import spark.implicits._
 
     // $example on$

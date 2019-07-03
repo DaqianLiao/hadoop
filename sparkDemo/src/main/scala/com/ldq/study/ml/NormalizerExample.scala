@@ -29,7 +29,7 @@ object NormalizerExample {
     val spark = SparkSession
       .builder
       .appName("NormalizerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dataFrame = spark.createDataFrame(Seq(

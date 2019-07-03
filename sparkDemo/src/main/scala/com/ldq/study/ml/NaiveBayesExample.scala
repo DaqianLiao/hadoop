@@ -29,7 +29,7 @@ object NaiveBayesExample {
     val spark = SparkSession
       .builder
       .appName("NaiveBayesExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load the data stored in LIBSVM format as a DataFrame.

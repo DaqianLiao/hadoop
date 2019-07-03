@@ -29,7 +29,7 @@ object InteractionExample {
     val spark = SparkSession
       .builder
       .appName("InteractionExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(Seq(

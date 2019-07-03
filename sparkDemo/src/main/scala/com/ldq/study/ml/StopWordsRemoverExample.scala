@@ -28,7 +28,7 @@ object StopWordsRemoverExample {
     val spark = SparkSession
       .builder
       .appName("StopWordsRemoverExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val remover = new StopWordsRemover()

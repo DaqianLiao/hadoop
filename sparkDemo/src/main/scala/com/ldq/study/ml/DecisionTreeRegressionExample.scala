@@ -32,7 +32,7 @@ object DecisionTreeRegressionExample {
     val spark = SparkSession
       .builder
       .appName("DecisionTreeRegressionExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load the data stored in LIBSVM format as a DataFrame.

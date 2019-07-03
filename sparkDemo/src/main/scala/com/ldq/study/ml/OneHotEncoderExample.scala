@@ -28,7 +28,7 @@ object OneHotEncoderExample {
     val spark = SparkSession
       .builder
       .appName("OneHotEncoderExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(Seq(

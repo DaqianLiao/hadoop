@@ -32,7 +32,7 @@ object DecisionTreeClassificationExample {
     val spark = SparkSession
       .builder
       .appName("DecisionTreeClassificationExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     // $example on$
     // Load the data stored in LIBSVM format as a DataFrame.
     val data = spark.read.format("libsvm").load("data/mllib/sample_libsvm_data.txt")

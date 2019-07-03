@@ -29,7 +29,7 @@ object DCTExample {
     val spark = SparkSession
       .builder
       .appName("DCTExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val data = Seq(

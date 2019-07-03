@@ -29,7 +29,7 @@ object IndexToStringExample {
     val spark = SparkSession
       .builder
       .appName("IndexToStringExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val df = spark.createDataFrame(Seq(

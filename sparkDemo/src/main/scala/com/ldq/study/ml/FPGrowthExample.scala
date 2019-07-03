@@ -37,7 +37,7 @@ object FPGrowthExample {
     val spark = SparkSession
       .builder
       .appName(s"${this.getClass.getSimpleName}")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     import spark.implicits._
 
     // $example on$

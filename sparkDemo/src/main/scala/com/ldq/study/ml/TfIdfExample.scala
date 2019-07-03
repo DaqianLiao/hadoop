@@ -29,8 +29,7 @@ object TfIdfExample {
     val spark = SparkSession
       .builder
       .appName("TfIdfExample")
-      .master("local[*]")
-      .getOrCreate()
+     .master("local[*]").getOrCreate()
 
     // $example on$
     val sentenceData = spark.createDataFrame(Seq(

@@ -29,7 +29,7 @@ object ElementwiseProductExample {
     val spark = SparkSession
       .builder
       .appName("ElementwiseProductExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Create some vector data; also works for sparse vectors

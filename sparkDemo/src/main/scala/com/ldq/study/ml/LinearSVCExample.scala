@@ -29,7 +29,7 @@ object LinearSVCExample {
     val spark = SparkSession
       .builder
       .appName("LinearSVCExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Load training data

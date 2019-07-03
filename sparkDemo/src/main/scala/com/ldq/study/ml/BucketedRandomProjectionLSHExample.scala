@@ -36,7 +36,7 @@ object BucketedRandomProjectionLSHExample {
     val spark = SparkSession
       .builder
       .appName("BucketedRandomProjectionLSHExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val dfA = spark.createDataFrame(Seq(

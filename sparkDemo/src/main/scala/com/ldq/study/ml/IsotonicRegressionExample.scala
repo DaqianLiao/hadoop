@@ -36,7 +36,7 @@ object IsotonicRegressionExample {
     val spark = SparkSession
       .builder
       .appName(s"${this.getClass.getSimpleName}")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Loads data.

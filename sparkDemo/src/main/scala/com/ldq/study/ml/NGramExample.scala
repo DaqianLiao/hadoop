@@ -28,7 +28,7 @@ object NGramExample {
     val spark = SparkSession
       .builder
       .appName("NGramExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val wordDataFrame = spark.createDataFrame(Seq(

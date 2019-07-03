@@ -28,7 +28,7 @@ object VectorIndexerExample {
     val spark = SparkSession
       .builder
       .appName("VectorIndexerExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val data = spark.read.format("libsvm").load("data/mllib/sample_libsvm_data.txt")

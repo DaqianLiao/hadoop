@@ -29,7 +29,7 @@ object ChiSqSelectorExample {
     val spark = SparkSession
       .builder
       .appName("ChiSqSelectorExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
     import spark.implicits._
 
     // $example on$

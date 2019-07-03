@@ -33,7 +33,7 @@ object PipelineExample {
     val spark = SparkSession
       .builder
       .appName("PipelineExample")
-      .getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     // Prepare training documents from a list of (id, text, label) tuples.
