@@ -41,6 +41,7 @@ object StopWordsRemoverExample {
     )).toDF("id", "raw")
 
     remover.transform(dataSet).show(false)
+    println(remover.getStopWords.mkString(","))
     // $example off$
 
     spark.stop()
