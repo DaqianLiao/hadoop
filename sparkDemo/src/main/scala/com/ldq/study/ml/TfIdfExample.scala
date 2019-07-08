@@ -20,6 +20,7 @@ package com.ldq.study.ml
 
 // $example on$
 import org.apache.spark.ml.feature.{HashingTF, IDF, Tokenizer}
+import org.apache.spark.sql.DataFrame
 // $example off$
 import org.apache.spark.sql.SparkSession
 
@@ -29,7 +30,7 @@ object TfIdfExample {
     val spark = SparkSession
       .builder
       .appName("TfIdfExample")
-     .master("local[*]").getOrCreate()
+      .master("local[*]").getOrCreate()
 
     // $example on$
     val sentenceData = spark.createDataFrame(Seq(
@@ -38,23 +39,39 @@ object TfIdfExample {
       (1.0, "Logistic regression models are neat")
     )).toDF("label", "sentence")
 
-    val tokenizer = new Tokenizer().setInputCol("sentence").setOutputCol("words")
-    val wordsData = tokenizer.transform(sentenceData)
+    def transfer(train: DataFrame): DataFrame = {
+      val tokenizer = new Tokenizer().setInputCol("sentence").setOutputCol("words")
+      val wordsData = tokenizer.transform(train)
 
-    val hashingTF = new HashingTF()
-      .setInputCol("words").setOutputCol("rawFeatures").setNumFeatures(20)
+      val hashingTF = new HashingTF()
+        .setInputCol("words").setOutputCol("rawFeatures").setNumFeatures(20)
 
-    val featurizedData = hashingTF.transform(wordsData)
-    // alternatively, CountVectorizer can also be used to get term frequency vectors
+      val hashData = hashingTF.transform(wordsData)
+      // alternatively, CountVectorizer can also be used to get term frequency vectors
+      hashData.show(false)
+      val idf = new IDF().setInputCol("rawFeatures").setOutputCol("features")
+      val idfModel = idf.fit(hashData)
 
-    val idf = new IDF().setInputCol("rawFeatures").setOutputCol("features")
-    val idfModel = idf.fit(featurizedData)
+      val rescaledData = idfModel.transform(hashData)
+      rescaledData
+    }
 
-    val rescaledData = idfModel.transform(featurizedData)
-    rescaledData.select("label", "features").show()
+    val train = transfer(sentenceData)
+    train.select("label", "features").show(false)
     // $example off$
+
+
+    val testData = spark.createDataFrame(Seq(
+      (0.0, "Hi I heard about Spark"),
+      (0.0, "I wish Java could use case classes"),
+      (1.0, "Logistic regression models are neat")
+    )).toDF("label", "sentence")
+
+    val test = transfer(testData)
+    test.select("label","features").show(false)
 
     spark.stop()
   }
 }
+
 // scalastyle:on println
