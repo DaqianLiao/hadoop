@@ -14,16 +14,16 @@ import java.util.Optional;
 @Component
 public class Consumer {
 
-    @KafkaListener(topics = {"test"})
-    public void listen(ConsumerRecord<?, ?> record){
-
-        Optional<?> kafkaMessage = Optional.ofNullable(record.value());
-
-        if (kafkaMessage.isPresent()) {
-            Object message = kafkaMessage.get();
-            System.out.println("---->"+record);
-            System.out.println("---->"+message);
-        }
-
-    }
+//    @KafkaListener(topics = {"test"})
+//    public void listen(ConsumerRecord<?, ?> record){
+//
+//        Optional<?> kafkaMessage = Optional.ofNullable(record.value());
+//
+//        if (kafkaMessage.isPresent()) {
+//            Object message = kafkaMessage.get();
+//            System.out.println("---->"+record);
+//            System.out.println("---->"+message);
+//        }
+//
+//    }
 }
