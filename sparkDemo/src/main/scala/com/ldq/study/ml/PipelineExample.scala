@@ -35,8 +35,7 @@ object PipelineExample {
       .appName("PipelineExample")
       .master("local[*]").getOrCreate()
 
-    // $example on$
-    // Prepare training documents from a list of (id, text, label) tuples.
+    //训练集数据
     val training = spark.createDataFrame(Seq(
       (0L, "a b c d e spark", 1.0),
       (1L, "b d", 0.0),
@@ -45,30 +44,44 @@ object PipelineExample {
     )).toDF("id", "text", "label")
 
     // Configure an ML pipeline, which consists of three stages: tokenizer, hashingTF, and lr.
+    //定义分词
     val tokenizer = new Tokenizer()
       .setInputCol("text")
       .setOutputCol("words")
+
+    //统计词频信息
     val hashingTF = new HashingTF()
       .setNumFeatures(1000)
       .setInputCol(tokenizer.getOutputCol)
       .setOutputCol("features")
+
+    //进行逻辑回归训练
     val lr = new LogisticRegression()
+      //设置最大迭代次数
       .setMaxIter(10)
+      //设置正则化参数
       .setRegParam(0.001)
+
+    //定义模型步骤
+    val stage = Array(tokenizer, hashingTF, lr)
+
     val pipeline = new Pipeline()
-      .setStages(Array(tokenizer, hashingTF, lr))
+      .setStages(stage)
 
     // Fit the pipeline to training documents.
     val model = pipeline.fit(training)
+    println(" print model stage ===========")
+    model.stages.foreach(println)
 
     // Now we can optionally save the fitted pipeline to disk
-    model.write.overwrite().save("/tmp/spark-logistic-regression-model")
+    model.write.overwrite().save("data/model/spark-logistic-regression-model")
 
     // We can also save this unfit pipeline to disk
-    pipeline.write.overwrite().save("/tmp/unfit-lr-model")
+    pipeline.write.overwrite().save("data/model/unfit-lr-model")
 
     // And load it back in during production
-    val sameModel = PipelineModel.load("/tmp/spark-logistic-regression-model")
+    val sameModel = PipelineModel.load("data/model/spark-logistic-regression-model")
+
 
     // Prepare test documents, which are unlabeled (id, text) tuples.
     val test = spark.createDataFrame(Seq(
@@ -90,4 +103,5 @@ object PipelineExample {
     spark.stop()
   }
 }
+
 // scalastyle:on println
