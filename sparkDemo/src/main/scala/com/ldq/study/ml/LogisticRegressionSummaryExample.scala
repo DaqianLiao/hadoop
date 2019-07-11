@@ -49,6 +49,7 @@ object LogisticRegressionSummaryExample {
     // example
     val trainingSummary = lrModel.summary
 
+
     // Obtain the objective per iteration.
     val objectiveHistory = trainingSummary.objectiveHistory
     println("objectiveHistory:")
