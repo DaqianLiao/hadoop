@@ -19,9 +19,8 @@ public class SwaggerConfig {
     public Docket docket(){
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
 //                   当前包路径
-                .apis(RequestHandlerSelectors.basePackage("cn.ldq.kafka"))
-                .paths(PathSelectors.regex(".*controller")).build();
-
+                .apis(RequestHandlerSelectors.basePackage("cn.ldq.kafka.controller"))
+                .paths(PathSelectors.any()).build();
     }
 
     //构建api文档的详细信息函数

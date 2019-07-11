@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -28,11 +29,8 @@ public class AdminService {
     public String findAllTopic() throws ExecutionException, InterruptedException {
         ListTopicsResult result = adminClient.listTopics();
         Collection<TopicListing> list = result.listings().get();
-        List<String> resultList = new ArrayList<>();
-        for (TopicListing topicListing : list) {
-            resultList.add(topicListing.name());
-        }
-        return JSONObject.toJSONString(resultList);
+        List<String> collect = list.stream().map(x -> x.name()).collect(Collectors.toList());
+        return Arrays.toString(collect.toArray());
     }
 
 
@@ -112,4 +110,11 @@ public class AdminService {
         return Strings.join(config.entrySet().iterator(), '\n');
     }
 
+
+    public void groupIdOffsets(String groupId) throws ExecutionException, InterruptedException {
+        ListConsumerGroupOffsetsResult offsets = adminClient.listConsumerGroupOffsets(groupId);
+        offsets.partitionsToOffsetAndMetadata().get().forEach(
+                (x, y) -> System.out.println("tp = " + x.toString() + ", " + y.toString())
+        );
+    }
 }
