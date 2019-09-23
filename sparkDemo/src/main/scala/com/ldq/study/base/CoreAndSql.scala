@@ -1,6 +1,5 @@
 package com.ldq.study.base
 
-import com.ldq.study.base.CoreAndSql.spark
 import org.apache.spark.sql.SparkSession
 
 import scala.util.Random
@@ -151,10 +150,10 @@ object CoreAndSql {
   }
 
   def main(args: Array[String]): Unit = {
-    //    mean()
-    //    wordCount()
-    //    topN()
-    //    statatics()
+    mean()
+    wordCount()
+    topN()
+    statatics()
     sortAndOrder()
     sortTwice
     spark.close()
