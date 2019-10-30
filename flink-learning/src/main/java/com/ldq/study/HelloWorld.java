@@ -18,7 +18,7 @@ public class HelloWorld {
         //将集合转化为数据源
         DataSet<String> text = env.fromCollection(list);
         //打印数据结果
-//        stringDataSource.print();
+        text.print();
 
         DataSet<Tuple2<String, Integer>> counts = text.flatMap(new LineSplitter())
                 .groupBy(0)

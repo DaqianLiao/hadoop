@@ -1,5 +1,6 @@
 package com.ldq.study;
 
+import com.ldq.study.entity.WC;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.table.api.Table;
@@ -30,25 +31,4 @@ public class TableHelloWorld {
 
     }
 
-    public static class WC {
-        public String name;
-        public Integer cnt;
-
-        public WC() {
-        }
-
-        public WC(String name, Integer count) {
-            this.name = name;
-            this.cnt = count;
-        }
-
-
-        @Override
-        public String toString() {
-            return "WC{" +
-                    "name='" + name + '\'' +
-                    ", count=" + cnt +
-                    '}';
-        }
-    }
 }
