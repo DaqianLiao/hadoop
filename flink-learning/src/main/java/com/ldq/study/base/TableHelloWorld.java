@@ -1,4 +1,4 @@
-package com.ldq.study;
+package com.ldq.study.base;
 
 import com.ldq.study.entity.WC;
 import org.apache.flink.api.java.DataSet;

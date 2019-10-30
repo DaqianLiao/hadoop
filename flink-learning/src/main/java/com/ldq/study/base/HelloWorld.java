@@ -1,4 +1,4 @@
-package com.ldq.study;
+package com.ldq.study.base;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.DataSet;
