@@ -11,6 +11,6 @@ public class KafkaProducerUtils {
 
     public static void send(String topic, String key, String value) throws Exception {
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
-        System.out.println(producer.send(record).get()+ ", value = " + value);
+        System.out.println(producer.send(record).get() + ", value = " + value);
     }
 }
