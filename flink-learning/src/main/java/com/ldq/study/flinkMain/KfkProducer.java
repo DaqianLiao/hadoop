@@ -3,8 +3,8 @@ package com.ldq.study.flinkMain;
 import com.ldq.study.utils.KafkaProducerUtils;
 import org.apache.flink.api.common.time.Time;
 
-
 public class KfkProducer {
+
     public static void main(String[] args) throws Exception {
         int num = 10;
         long timestamp = System.currentTimeMillis();
@@ -14,4 +14,5 @@ public class KfkProducer {
             KafkaProducerUtils.send(topic, null, "value=" + timestamp + "-" + i);
         }
     }
+
 }
