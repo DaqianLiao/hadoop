@@ -19,6 +19,7 @@
 package com.ldq.study.ml
 
 // $example on$
+
 import org.apache.spark.ml.feature.{HashingTF, IDF, Tokenizer}
 import org.apache.spark.sql.DataFrame
 // $example off$
@@ -51,8 +52,15 @@ object TfIdfExample {
       hashData.show(false)
       val idf = new IDF().setInputCol("rawFeatures").setOutputCol("features")
       val idfModel = idf.fit(hashData)
-
       val rescaledData = idfModel.transform(hashData)
+      println("====default====")
+      rescaledData.foreach(x => println(x))
+
+      val idfMin = new IDF().setMinDocFreq(2).setInputCol("rawFeatures").setOutputCol("features")
+      val idfMinModel = idfMin.fit(hashData)
+      val rescaleMindData = idfMinModel.transform(hashData)
+      println("==== setMinDocFreq = 2")
+      rescaleMindData.foreach(x => println(x))
       rescaledData
     }
 
@@ -68,7 +76,7 @@ object TfIdfExample {
     )).toDF("label", "sentence")
 
     val test = transfer(testData)
-    test.select("label","features").show(false)
+    test.select("label", "features").show(false)
 
     spark.stop()
   }

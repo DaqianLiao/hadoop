@@ -25,13 +25,13 @@ import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 import org.apache.spark.sql.SparkSession
 
 /**
- * An example of Multiclass to Binary Reduction with One Vs Rest,
- * using Logistic Regression as the base classifier.
- * Run with
- * {{{
- * ./bin/run-example ml.OneVsRestExample
- * }}}
- */
+  * An example of Multiclass to Binary Reduction with One Vs Rest,
+  * using Logistic Regression as the base classifier.
+  * Run with
+  * {{{
+  * ./bin/run-example ml.OneVsRestExample
+  * }}}
+  */
 
 object OneVsRestExample {
   def main(args: Array[String]) {
@@ -47,6 +47,7 @@ object OneVsRestExample {
 
     // generate the train/test split.
     val Array(train, test) = inputData.randomSplit(Array(0.8, 0.2))
+    train.show(10,false)
 
     // instantiate the base classifier
     val classifier = new LogisticRegression()
@@ -76,4 +77,5 @@ object OneVsRestExample {
   }
 
 }
+
 // scalastyle:on println
