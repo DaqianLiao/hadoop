@@ -12,7 +12,7 @@
         <elasticsearch.plugin.java.version>1.8</elasticsearch.plugin.java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <elasticsearch.version>6.1.2</elasticsearch.version>
+        <elasticsearch.version>6.8.13</elasticsearch.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <elasticsearch.plugin.name>HelloPlugin</elasticsearch.plugin.name>
         <elasticsearch.plugin.classname>com.ldq.es.HelloPlugin</elasticsearch.plugin.classname>
